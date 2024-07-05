@@ -1,0 +1,27 @@
+program         ::= statement*
+statement       ::= (assignment | print_statement | if_statement | while_statement | function_definition | class_definition) ";"
+assignment      ::= identifier "=" expression
+print_statement ::= "print" "(" expression ")"
+if_statement    ::= "if" "(" expression ")" "{" statement* "}"
+while_statement ::= "while" "(" expression ")" "{" statement* "}"
+function_definition ::= "def" identifier "(" parameters ")" "{" statement* "}"
+class_definition ::= "class" identifier "{" class_body "}"
+class_body      ::= (function_definition | assignment)*
+parameters      ::= identifier ("," identifier)*
+expression      ::= term (("+" | "-" | "==" | "!=" | "<" | ">" | "<=" | ">=") term)*
+term            ::= factor (("*" | "/") factor)*
+factor          ::= number | identifier | array_literal | array_index | dict_literal | set_literal | tuple_literal | function_call | class_instance | method_call | "(" expression ")"
+array_literal   ::= "[" (expression ("," expression)*)? "]"
+array_index     ::= identifier "[" expression "]"
+dict_literal    ::= "{" (pair ("," pair)*)? "}"
+pair            ::= expression ":" expression
+set_literal     ::= "{" expression ("," expression)* "}"
+tuple_literal   ::= "(" (expression ("," expression)+ | expression ","?)? ")"
+function_call   ::= identifier "(" arguments ")"
+class_instance  ::= "new" identifier "(" arguments ")"
+method_call     ::= identifier "." identifier "(" arguments ")"
+arguments       ::= expression ("," expression)*
+identifier      ::= letter (letter | digit)*
+number          ::= digit+
+letter          ::= "a" | ... | "z" | "A" | ... | "Z"
+digit           ::= "0" | ... | "9"
