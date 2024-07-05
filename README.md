@@ -20,5 +20,5 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/pyjaru.git
+   git clone https://github.com/LifeLane/pyjaru.git
    cd pyjaru
